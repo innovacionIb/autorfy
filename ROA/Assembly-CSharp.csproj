@@ -46,8 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Loader.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
      <Compile Include="Assets\Scripts\cameraProperties.cs" />
+     <Compile Include="Assets\Scripts\videoManager.cs" />
      <Compile Include="Assets\Vuforia Video Playback\Scripts\VideoPlaybackBehaviour.cs" />
      <Compile Include="Assets\Vuforia Video Playback\Scripts\VideoPlayerHelper.cs" />
      <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
