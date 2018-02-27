@@ -6,9 +6,7 @@ Confidential and Proprietary - Protected under copyright and other laws.
 
 using UnityEngine;
 using UnityEngine.Video;
-using UnityEditor;
-using System.IO;
-using System;
+
 
 namespace Vuforia
 {
@@ -26,7 +24,6 @@ namespace Vuforia
 
 
 		public GameObject uiManager, video, btns_AP, btns_NAP, btns_APH, btns_NAPH;
-		//public string URLvideoAguaPiedra = "http://clips.vorwaerts-gmbh.de/Vfe_html5.mp4";
         #region UNTIY_MONOBEHAVIOUR_METHODS
     
         void Start()

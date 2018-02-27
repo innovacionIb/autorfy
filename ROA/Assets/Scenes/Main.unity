@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.4964127, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ VideoPlayer:
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 3
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 1
   m_TargetAudioSources:
@@ -475,7 +475,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0, z: 0.23348919}
+      m_Extent: {x: 0.43264842, y: 0, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -527,7 +527,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 000000bf00000000ca176fbe000000000000803f000000000000000000000000000000bf00000000ca176f3e000000000000803f00000000000000000000803f0000003f00000000ca176fbe000000000000803f000000000000803f000000000000003f00000000ca176f3e000000000000803f000000000000803f0000803f
+    _typelessdata: 1884ddbe00000000000000bf000000000000803f0000000000000000000000001884ddbe000000000000003f000000000000803f00000000000000000000803f1884dd3e00000000000000bf000000000000803f000000000000803f000000001884dd3e000000000000003f000000000000803f000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -1232,7 +1232,7 @@ VideoPlayer:
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 3
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 1
   m_TargetAudioSources:
@@ -1539,7 +1539,6 @@ MonoBehaviour:
   pV2: {fileID: 1418289484}
   activated: 0
   video1: 0
-  videoPlayer: {fileID: 861963549}
 --- !u!4 &784106393
 Transform:
   m_ObjectHideFlags: 0
@@ -1559,7 +1558,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: 7390fcb5-fce2-4974-9251-4b94a1c029e0Material
+  m_Name: 66d832fb-4129-4ba0-97fb-392d661a62f1Material
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -1792,14 +1791,14 @@ VideoPlayer:
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 3
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 1
   m_TargetAudioSources:
   - {fileID: 804483652}
   m_DirectAudioVolumes:
   - 1
-  m_Url: 
+  m_Url: file:///Users/carlos.rivas/Documents/GitHub/Unity_Develop/autorfy/ROA/Assets/Videos/aguaPiedra.mp4
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
@@ -1966,7 +1965,7 @@ VideoPlayer:
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 3
   m_AspectRatio: 2
-  m_DataSource: 1
+  m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 1
   m_TargetAudioSources:
@@ -1995,7 +1994,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2e1523dcbfda241d0a682d1fe3d06cd5, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
