@@ -35,8 +35,8 @@ $ source ~/.profile<br/>
 Check that the Go version is v1.8 or later:<br/>
 $ go version<br/>
 
-##The project 
-###For running blochain 
+<b>The project</b>  <br>
+For running blochain 
 
 First, remove any pre-existing containers, as it may conflict with commands in this tutorial:
 
