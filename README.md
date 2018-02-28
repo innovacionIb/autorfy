@@ -43,7 +43,7 @@ First, remove any pre-existing containers, as it may conflict with commands in t
 $ docker rm -f $(docker ps -aq)
 
 go to the Work folder <br/>
-cd   autorFY/hyperledgerAutorfy/autorfy-app
+cd   autorFY/blockchainAutorfy/autorfy-app
 
 Then, let’s start the Hyperledger Fabric network with the following command:
 
