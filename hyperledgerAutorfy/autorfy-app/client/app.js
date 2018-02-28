@@ -103,7 +103,7 @@ app.controller('appController', function ($scope, appFactory) {
             for (var i = 0; i < data.length; i++) {
                 parseInt(data[i].Key);
                 data[i].Record.Key = parseInt(data[i].Key);
-                if (data[i].Record.descripcion.includes(tag)) { array.push(data[i].Record); }
+                if (data[i].Record.tag.includes(tag)) { array.push(data[i].Record); }
             }
             array.sort(function (a, b) {
                 return parseFloat(a.Key) - parseFloat(b.Key);
