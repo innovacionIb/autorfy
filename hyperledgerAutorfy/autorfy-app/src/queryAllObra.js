@@ -51,7 +51,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
 
     // queryAllTuna - requires no arguments , ex: args: [''],
     const request = {
-        chaincodeId: 'obra-app',
+        chaincodeId: 'autorfy-app',
         txId: tx_id,
         fcn: 'queryAllObra',
         args: ['']

@@ -38,6 +38,7 @@ type Obra struct {
 	Usuario  string `json:"usuario"`
 	FechaCreacion string `json:"fechacreacion"`
 	Descripcion string `json:"descripcion"`
+	Tag string `json:"tag"`
 }
 
 /*
@@ -97,8 +98,8 @@ Will add test data (10 tuna catches)to our network
  */
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
 	obra := []Obra{
-		Obra{Imagen : "923F", Location: "67.0006, -70.5476",Timestamp:"1504057825", FechaCreacion: now(),Descripcion: "des1", Usuario: "Erick"},
-		Obra{Imagen : "M83T", Location: "91.2395, -49.4594",Timestamp:"1504057825", FechaCreacion: now(),Descripcion: "des2", Usuario: "Ricardo"},
+		Obra{Imagen : "img1.png", Location: "67.0006, -70.5476",Timestamp:"1504057825", FechaCreacion: "1504057825",Descripcion: "des1", Usuario: "Erick",Tag:"Img1"},
+		Obra{Imagen : "img2.png", Location: "91.2395, -49.4594",Timestamp:"1504057825", FechaCreacion: "1504057825",Descripcion: "des2", Usuario: "Ricardo",Tag:"Img2"},
 	}
 
 	i := 0
@@ -120,12 +121,7 @@ This method takes in five arguments (attributes to be saved in the ledger).
  */
 func (s *SmartContract) recordObra(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 6 {
-		return shim.Error("Incorrect number of arguments. Expecting 4")
-	}
-
-	var obra = Obra{ Imagen: args[1], Location: args[2], Timestamp: args[3], FechaCreacion: args[4], Descripcion: args[5], Usuario: args[6] }
-
+	var obra = Obra{ Imagen: args[1], Location: args[2], Timestamp: args[3], FechaCreacion: args[4], Descripcion: args[5], Usuario: args[6],Tag: args[7] }
 	ObraAsBytes, _ := json.Marshal(obra)
 	err := APIstub.PutState(args[0], ObraAsBytes)
 	if err != nil {
@@ -144,7 +140,7 @@ func (s *SmartContract) queryAllObra(APIstub shim.ChaincodeStubInterface) sc.Res
 
 	startKey := "0"
 	endKey := "999"
-
+    
 	resultsIterator, err := APIstub.GetStateByRange(startKey, endKey)
 	if err != nil {
 		return shim.Error(err.Error())

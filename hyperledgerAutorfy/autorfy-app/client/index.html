@@ -1,198 +1,38 @@
-<!-- SPDX-License-Identifier: Apache-2.0 -->
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-  <head>
-    <title>Hyperledger Fabric Obra Application</title>
-    <link rel="icon" href="favicon.png" type="image/gif">
-
-    <!-- require jquery and bootstrap scripts -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    
-    <!-- adding style here -->
-    <style type="text/css">
-      header{
-        background-color: lightgray;
-        font-size:20px;
-        padding:15px;
-      }
-      header, .form-group{
-        margin-bottom: 3%;
-      }
-      .form-group{
-        width:50%;
-      }
-      #body{
-        margin-left:3%;
-        margin-right:3%;
-      }
-      .form-control{
-        margin: 8px;
-      }
-      #right_header{
-        width:20%;
-        font-size:15px;
-        margin-right:0px;
-      }
-      #left_header{
-        margin-left:0;
-        width:40%;
-        display:inline-block;
-      } 
-      #id {
-        width:49%;
-        display: inline-block;
-      }
-      table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-      }
-      td, th {
-          border: 1px solid #dddddd;
-          text-align: left;
-          padding: 8px;
-      }
-      tr:nth-child(even) {
-          background-color: #dddddd;
-      }
-    </style>
-  </head>
-  <body ng-app="application" ng-controller="appController">
-    <header>
-      <div id="left_header">Hyperledger Fabric Obra Application</div>
-      <i id="right_header">Example Blockchain Application for Introduction to Hyperledger Fabric LFS171x</i>
-    </header>
-
-    <div id="body">
-	 
-	 <div class="form-group">
-        <label>Crea registro de tu Obra</label>
-        <h5 style="color:green;margin-bottom:2%" id="success_create">Registro Exitoso! Tx ID: {{create_obra}}</h5>
-        <br>
-        Tag: <input class="form-control" type="text" placeholder="Ej: escultura de el David" ng-model="obra.id">
-		Usuario: <input class="form-control" type="text" placeholder="Ej.: Ricardo" ng-model="obra.holder">
-        Descripción: <input class="form-control" type="text" placeholder="Ej: 0239L" ng-model="obra.vessel">
-		Fecha de creación: <input class="form-control" type="text" placeholder="Ex: 4982342301" ng-model="obra.timestamp">
-        Imagen: <input id="createFile" type="File" class="form-control" type="text" placeholder="Ex: 28.012" >
-        
-        <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordObra()"> 
-		<input id="hdlat" type="hidden" />
-		<input id="hdlong" type="hidden" />
-      </div>
-
-    
-      <div class="form-group">
-        <label>Query All Obra Catches</label>
-        <p><input id="queryAllObra" type="submit" value="Query" class="btn btn-primary" ng-click="queryAllObra()"></p>
-      </div>
- 
-      <table id="all_obra" class="table" align="center">
-
-        <tr>
-          <th>ID</th>
-          <th>Timestamp</th>
-          <th>Holder</th>
-          <th>Catch Location <br>(Longitude, Latitude)</th>
-          <th>Vessel</th>
-        </tr>
-
-        <tr ng-repeat="obra in all_obra">
-          <td>{{obra.Key}}</td>
-          <td>{{obra.timestamp}}</td>
-          <td>{{obra.holder}}</td>
-          <td>{{obra.location}}</td>
-          <td>{{obra.vessel}}</td>
-        </tr>
-      </table>
-
-      <div class="form-group">
-        <label>Query a Specific Obra Catch</label><br>
-        <h5 style="color:red;margin-bottom:2%" id="error_query">Error: Please enter a valid Obra Id</h5>
-        
-        Enter a catch number: <input id="createName" class="form-control" type="text" placeholder="Ex: 3" ng-model="obra_id">
-        <input id="querySubmit" type="submit" value="Query" class="btn btn-primary" ng-click="queryObra()">
-      </div>
-
-      <table id="query_obra" class="table" align="center">
-
-        <tr>
-          <th>Timestamp</th>
-          <th>Holder</th>
-          <th>Catch Location <br>(Longitude, Latitude)</th>
-          <th>Vessel</th>
-        </tr>
-
-        <tr>
-          <td>{{query_obra.timestamp}}</td>
-          <td>{{query_obra.holder}}</td>
-          <td>{{query_obra.location}}</td>
-          <td>{{query_obra.vessel}}</td>
-        </tr>
-      </table>
-
-    </div>
-	<div style="width:50px;height:50px;background-color:red" onclick="AgregaUsuario('test2','test2')">
-  </body>
-    <!-- requiring the angular page -->
-    <script type="text/javascript" src="app.js"> </script>
-	<script type="text/javascript">
-            //var val = document.getElementById("words").getAttribute("value");
-            function write(DATA,name){
-                var vUrl = "http://ibinnovation9734.cloudapp.net/ImgAutorFY/write.php";
-                var file_data = $("#createFile").prop("files")[0];   // Getting the properties of file from file field
-				var form_data = new FormData();                  // Creating object of FormData class
-				form_data.append("file", file_data)              // Appending parameter named file with properties of file_field to form_data
-				form_data.append("name", name)                 // Adding extra parameters to form_data
-				$.ajax({
-							url: vUrl,
-							dataType: 'script',
-							cache: false,
-							contentType: false,
-							processData: false,
-							data: form_data,                         // Setting the data attribute of ajax with file_data
-							type: 'post'
-				   });
-            }
-            function read(){
-                var url = "read.php";
-                var XML = "data.txt"
-                if (window.XMLHttpRequest)
-                {// code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                }
-                else
-                {// code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.open("GET",url+"?F="+XLM,false);
-                xmlhttp.send(null);
-                document.getElementById("gets").innerHTML = xmlhttp.responseText;
-            }
-		document.querySelector('input[type=File]').addEventListener('change', function () {
-			 var reader = new FileReader();
-            reader.onload = function () {
-                var arrayBuffer = this.result;
-				var name =document.querySelector('input[type=File]').files.item(0).name;
-				write(arrayBuffer,name);
-            }
-            reader.readAsDataURL(this.files[0]);
-        }, false);
-		
-		function getLocation() {
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(showPosition);
-			} else { 
-				x.innerHTML = "Geolocation is not supported by this browser.";
-			}
-		}
-		function showPosition(position) {
-			$("#hdlat").val(position.coords.latitude) ; 
-			$("#hdlong").val( position.coords.longitude);
-		}
-		 getLocation() ;
-        </script>
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="Resources/js/Login.js"></script>
+    <link href="Resources/css/General.css" rel="stylesheet"/>
+</head>
+<!------ Include the above in your HEAD tag ---------->
+<!--
+    you can substitue the span of reauth email for a input with the email and
+    include the remember me checkbox
+    -->
+<body>
+    <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Recordarme
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="button">Sign in</button>
+            </form><!-- /form -->
+            <a href="Register.html" class="forgot-password">
+                Registrarse
+            </a>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+</body>
 </html>
