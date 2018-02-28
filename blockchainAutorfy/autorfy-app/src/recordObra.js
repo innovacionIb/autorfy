@@ -20,12 +20,13 @@ console.log("submit recording of a tuna catch: ");
 var array = req.params.obra.split("-");
 
 var key = array[0]
-var timestamp = array[2]
-var location = array[1]
-var vessel = array[4]
-var holder = array[3]
-
-
+var descrption = array[1]
+var location = array[2]
+var usuario = array[3]
+var fechacreacion = array[4]
+var imagen = array[5]
+var timestamp = array[6]
+var tag = array[7]
 var fabric_client = new Fabric_Client();
 
 // setup the fabric network
@@ -66,13 +67,14 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
     tx_id = fabric_client.newTransactionID();
     console.log("Assigning transaction_id: ", tx_id._transaction_id);
 
-    // recordTuna - requires 5 args, ID, vessel, location, timestamp,holder - ex: args: ['10', 'Hound', '-12.021, 28.012', '1504054225', 'Hansel'], 
+    // recordTuna - requires 5 args, ID, imagen, location, timestamp,holder - ex: args: ['10', 'Hound', '-12.021, 28.012', '1504054225', 'Hansel'], 
     // send proposal to endorser
     const request = {
         //targets : --- letting this default to the peers assigned to the channel
-        chaincodeId: 'obra-app',
+		//Imagen: args[1], Location: args[2], Timestamp: args[3], FechaCreacion: args[4], Descripcion: args[5], Usuario: args[6] }
+        chaincodeId: 'autorfy-app',
         fcn: 'recordObra',
-        args: [key, image, location, timestamp, holder],
+        args: [key,imagen, location, timestamp,fechacreacion,description,usuario,tag],
         chainId: 'mychannel',
         txId: tx_id
     };

@@ -1,11 +1,12 @@
 'use strict';
 /*
 * SPDX-License-Identifier: Apache-2.0
-
-Hyperledger Fabric Sample Query Program for tuna-app: Chaincode Invoke 
-
-This code is based on code written by the Hyperledger Fabric community.
-Original code can be found here: https://github.com/hyperledger/fabric-samples/blob/release/fabcar/query.js
+*/
+/*
+ * Hyperledger Fabric Sample Query Program for tuna-app: Chaincode Invoke 
+ 
+  This code is based on code written by the Hyperledger Fabric community.
+  Original code can be found here: https://github.com/hyperledger/fabric-samples/blob/release/fabcar/query.js
  */
 
 var Fabric_Client = require('fabric-client');
@@ -14,8 +15,6 @@ var util = require('util');
 var os = require('os');
 
 var fabric_client = new Fabric_Client();
-
-var key = req.params.id
 
 // setup the fabric network
 var channel = fabric_client.newChannel('mychannel');
@@ -50,12 +49,12 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
         throw new Error('Failed to get user1.... run registerUser.js');
     }
 
-    // queryTuna - requires 1 argument, ex: args: ['4'],
+    // queryAllTuna - requires no arguments , ex: args: [''],
     const request = {
-        chaincodeId: 'obra-app',
+        chaincodeId: 'autorfy-app',
         txId: tx_id,
-        fcn: 'queryObra',
-        args: [key]
+        fcn: 'queryAllObra',
+        args: ['']
     };
 
     // send the query proposal to the peer
@@ -68,7 +67,7 @@ Fabric_Client.newDefaultKeyValueStore({ path: store_path
             console.error("error from query = ", query_responses[0]);
         } else {
             console.log("Response is ", query_responses[0].toString());
-            res.send(query_responses[0].toString())
+            res.json(JSON.parse(query_responses[0].toString()));
         }
     } else {
         console.log("No payloads were returned from query");
