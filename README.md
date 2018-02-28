@@ -42,7 +42,7 @@ First, remove any pre-existing containers, as it may conflict with commands in t
 
 $ docker rm -f $(docker ps -aq)
 
-go to the Work folder
+go to the Work folder <br/>
 cd   autorFY/hyperledgerAutorfy/autorfy-app
 
 Then, let’s start the Hyperledger Fabric network with the following command:
@@ -59,6 +59,6 @@ $ node registerUser.js
 
 $ node server.js
 
-Load the client simply by opening localhost:8000 in any browser window of your choice, and you should see the user interface for our simple application at this URL (as in the screenshot below).
+Load the client simply by opening localhost:8000 in any browser window of your choice, and you should see the user interface for our simple application at this URL .
 
 Example of Blockchain here.   http://ibinnovation9734.cloudapp.net:8000 
