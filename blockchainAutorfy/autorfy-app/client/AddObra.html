@@ -15,24 +15,57 @@
         $(function () { $("#datepicker").datepicker(); });
     </script>
 </head>
-<body ng-app="application" ng-controller="appController" style="max-width:50%;margin:0 auto">
-
+<body ng-app="application" ng-controller="AddWorkController" style="max-width:50%;margin:0 auto">
     <div class="form-group">
+        <a href="Main.html"><img src="Resources/images/autorfy.png" style="margin:0 auto;max-width:300px"></a>
         <br />
-        <br />
-        <h3>Crea registro de tu Obra</h3>
-        <h5 style="color:green;margin-bottom:2%" id="success_create">Registro Exitoso! Tx ID: {{create_obra}}</h5>
+        <h3>Add your new work</h3>
         <br>
-        Tag: <input class="form-control" type="text" placeholder="Ej: escultura de el David" ng-model="Obra.tag">
-        Usuario: <input class="form-control" type="text" placeholder="Ej.: Ricardo" ng-model="Obra.usuario">
-        Descripción: <input class="form-control" type="text" placeholder="Ej: esta obra fue creada para.." ng-model="Obra.descripcion">
-        Fecha de creación: <input id="datepicker" class="form-control" type="text" ng-model="Obra.fechacreacion">
-        Imagen: <input id="createFile" type="File" class="form-control" placeholder="" files-input ng-model="fileArray">
-
+        Tag: <input class="form-control" type="text" placeholder="Ex.: David's sculpture" ng-model="Obra.tag">
+        User: <label id="inputUsuario" class="form-control"  ng-model="Obra.usuario">{{usuario}}</label>
+        Description: <input class="form-control" type="text" placeholder="Ex.: this work was created for test purposes.." ng-model="Obra.descripcion">
+        Date of creation: <input id="datepicker" class="form-control" type="text" ng-model="Obra.fechacreacion">
+        Image: <input id="createFile" type="File" class="form-control" placeholder="" files-input ng-model="fileArray">
+        <br />
         <input id="createSubmit" type="submit" value="Create" class="btn btn-primary" ng-click="recordObra()">
         <input id="hdlat" type="hidden" value="0" />
         <input id="hdlong" type="hidden" value="0" />
     </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Register</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>A new work has been loaded!</h3>
+                    with the TX_Id:&nbsp;&nbsp;<b>{{create_Obra}}</b>
+                    <br />
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <span>
+            <span class="copy" id="span1"> <b>Prototype Autorfy</b> Copyright © 2018 Ironbit S.A DE C.V,</span>
+            contact us:<a href="mailto:info@ironbit.com.mx"> info@ironbit.com.mx</a>
+        </span>
+    </footer>
     <script type="text/javascript" src="app.js"></script>
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        });
+        $("#myModal").on("hidden.bs.modal", function () {
+            window.location.href = './Main.html';
+        });
+    </script>
 </body>
 </html>

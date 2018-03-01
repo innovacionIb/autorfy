@@ -13,6 +13,9 @@ module.exports = function(app){
   app.get('/get_all_obra', function(req, res){
     tuna.get_all_obra(req, res);
   });
+  app.get('/get_user/:User', function(req, res){
+    tuna.get_user(req, res);
+  });
  app.get('/add_user/:User', function(req, res){
     tuna.add_user(req, res);
   });

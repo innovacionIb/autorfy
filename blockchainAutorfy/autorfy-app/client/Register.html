@@ -17,24 +17,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
     <title>Admin</title>
 </head>
-<body ng-app="application" ng-controller="appController" >
+<body ng-app="application" ng-controller="RegisterController">
     <div class="container">
+        <img src="Resources/images/autorfy.png" style="margin:0 auto;max-width:400px">
         <div class="row main">
-            <div class="panel-heading">
-                <div class="panel-title text-center">
-                    <h1 class="title">Company Name</h1>
-                    <hr />
-                </div>
-            </div>
+            <h3>Complete Your Registration</h3>
             <div class=" main-center card">
                 <form class="form-horizontal" method="post" action="#">
 
                     <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">Nombre</label>
+                        <label for="name" class="cols-sm-2 control-label">Name</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="name" id="name" ng-model="User.name" placeholder="Introduce tu Nombre" />
+                                <input type="text" class="form-control" name="name" id="name" ng-model="User.name" placeholder="your Name" />
                             </div>
                         </div>
                     </div>
@@ -43,56 +39,80 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="email" id="email" ng-model="User.email" placeholder="Introduce tu Email" />
+                                <input type="email" class="form-control" name="email" id="email" ng-model="User.email" placeholder="your Email" />
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Password</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="password" id="password" ng-model="User.password" placeholder="Introduce tu Password" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Userid" class="cols-sm-2 control-label">Identificación(INE,Pasaporte) </label>
+                        <label for="Userid" class="cols-sm-2 control-label"> Identification(INE,Passport)</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input type="file" class="form-control" name="Userid" id="Userid" placeholder="Carga tu Id" />
+                                <input type="file" class="form-control" name="Userid" id="Userid" placeholder="Upload your Id" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="domicilio" class="cols-sm-2 control-label">Comprobante de domicilio</label>
+                        <label for="domicilio" class="cols-sm-2 control-label">Proof of address</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                <input type="file" class="form-control" name="domicilio" id="domicilio" placeholder="Carga tu comprobante de domicilio" />
+                                <input type="file" class="form-control" name="domicilio" id="domicilio" placeholder="Upload your proof of address" />
                             </div>
                         </div>
                     </div>
                     <div class="form-group ">
                         <button type="button" class="btn btn-primary btn-lg btn-block login-button" ng-click="addUser()">Register</button>
                     </div>
-                    <div class="login-register">
-                        <a href="Index.html">Login</a>
+                    <div>
+                        <a href="./">Login</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">Register</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>A new user has been created!</h3>
+                    with the ID:&nbsp;&nbsp;<b>{{NewUser.Id}}</b>
+                    <br />
+                    <br />
+                    And Email:&nbsp;&nbsp;<b>{{NewUser.Email}}</b>
+                    <br /><br />
+                    Please copy the data that will be used as login
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <span>
+            <span class="copy" id="span1"> <b>Prototype Autorfy</b> Copyright © 2018 Ironbit S.A DE C.V,</span>
+            contact us:<a href="mailto:info@ironbit.com.mx"> info@ironbit.com.mx</a>
+        </span>
+    </footer>
     <script src="app.js"></script>
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        });
+        $("#myModal").on("hidden.bs.modal", function () {
+            if (localStorage.getItem("IDAutorFY") != null && localStorage.getItem("IDAutorFY") != "") {
+                window.location.href = './Main.html';
+            }
+        });
+    </script>
 </body>
 </html>

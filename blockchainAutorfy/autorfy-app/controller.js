@@ -139,14 +139,51 @@ return{
 			 return fabric_client.setUserContext(member_user);
 		}).then(()=>{
 			 console.log('User1 was successfully registered and enrolled and is ready to intreact with the fabric network');
-			 res.send('OK');
-
+             res.json(JSON.parse(member_user.toString()));
 		}).catch((err) => {
 			console.error('Failed to register: ' + err);
 			if(err.toString().indexOf('Authorization') > -1) {
 				console.error('Authorization failures may be caused by having admin credentials from a previous CA instance.\n' +
 				'Try again after deleting the contents of the store directory '+store_path);
 			}
+		});
+	},
+	get_user:function(req, res){
+		var fabric_client = new Fabric_Client();
+		var key = req.params.User;
+
+		// setup the fabric network
+		var channel = fabric_client.newChannel('mychannel');
+		var peer = fabric_client.newPeer('grpc://localhost:7051');
+		channel.addPeer(peer);
+
+		//
+		var member_user = null;
+		var store_path = path.join(os.homedir(), '.hfc-key-store');
+		console.log('Store path:'+store_path);
+		var tx_id = null;
+
+		// create the key value store as defined in the fabric-client/config/default.json 'key-value-store' setting
+		Fabric_Client.newDefaultKeyValueStore({ path: store_path
+		}).then((state_store) => {
+		    // assign the store to the fabric client
+		    fabric_client.setStateStore(state_store);
+		    var crypto_suite = Fabric_Client.newCryptoSuite();
+		    // use the same location for the state store (where the users' certificate are kept)
+		    // and the crypto store (where the users' keys are kept)
+		    var crypto_store = Fabric_Client.newCryptoKeyStore({path: store_path});
+		    crypto_suite.setCryptoKeyStore(crypto_store);
+		    fabric_client.setCryptoSuite(crypto_suite);
+
+		    // get the enrolled user from persistence, this user will sign all requests
+			console.error('SEARCH USR: ' + key);
+			//res.send(fabric_client.getUserContext(key, false));
+			//res.send(tx_id.getTransactionID());
+		 return fabric_client.getUserContext(key, true);
+		}).then((user_from_store) => {
+			res.json(JSON.parse(user_from_store.toString()));
+		}).catch((err) => {
+		    console.error('Failed to invoke successfully :: ' + err);
 		});
 	},
 	add_obra: function(req, res){

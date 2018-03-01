@@ -14,7 +14,10 @@ body, html {
     max-width: 350px;
     padding: 40px 40px;
 }
-
+.container 
+{
+    text-align:center;
+}
 .btn {
     font-weight: 700;
     height: 36px;
@@ -193,4 +196,12 @@ input::-webkit-input-placeholder {
 .login-register {
     font-size: 11px;
     text-align: center;
+}
+footer {
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+    left:0;
+    text-align:center;
 }

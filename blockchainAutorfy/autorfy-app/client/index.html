@@ -4,35 +4,42 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="Resources/js/Login.js"></script>
-    <link href="Resources/css/General.css" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <link href="Resources/css/General.css" rel="stylesheet" />
 </head>
 <!------ Include the above in your HEAD tag ---------->
 <!--
     you can substitue the span of reauth email for a input with the email and
     include the remember me checkbox
     -->
-<body>
+<body ng-app="application" ng-controller="LoginController">
     <div class="container">
+        <img src="Resources/images/autorfy.png" style="margin:0 auto;max-width:500px">
         <div class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="email" ng-model="User.email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="text" ng-model="User.password" id="inputPassword" class="form-control" placeholder="ID" required>
                 <div id="remember" class="checkbox">
                     <label>
-                        <input type="checkbox" value="remember-me"> Recordarme
+                        <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="button">Sign in</button>
+                <button ng-click="Login()" class="btn btn-lg btn-primary btn-block btn-signin" type="button">Sign in</button>
             </form><!-- /form -->
             <a href="Register.html" class="forgot-password">
-                Registrarse
+                Register
             </a>
         </div><!-- /card-container -->
     </div><!-- /container -->
+    <footer>
+        <span>
+            <span class="copy" id="span1"> <b>Prototype Autorfy</b> Copyright © 2018 Ironbit S.A DE C.V,</span>
+            contact us:<a href="mailto:info@ironbit.com.mx"> info@ironbit.com.mx</a>
+        </span>
+    </footer>
+    <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
