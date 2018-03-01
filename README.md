@@ -63,7 +63,9 @@ Next, we will download the latest released Docker images for Hyperledger Fabric,
 $ curl -sSL https://goo.gl/Q3YRTi | bash
 
 NOTE: Check https://hyperledger-fabric.readthedocs.io/en/latest/samples.html#binaries for the latest URL (the blue portion in the above curl command) to pull in binaries.
-<b>The project</b>  <br>
+
+<h2>The project</h2>  
+
 For running blochain 
 
 First, remove any pre-existing containers, as it may conflict with commands in this tutorial:
