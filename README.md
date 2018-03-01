@@ -3,7 +3,7 @@
 ## Pre Requisites
 ### Installing cURL
 Open a terminal window: CTRL+ALT+T.
-Type the following command and enter your password:
+Type the following command and enter your password:<br/>
 $ sudo apt install curl <br/>
 To check, run the following command in your terminal/command line:<br/>
 $ curl -V <br/>
