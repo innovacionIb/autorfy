@@ -10,6 +10,25 @@ $ curl -V <br/>
 Note: The "V" is capitalized.<br/>
 ### Installing Docker
 Docker provides great instructions on how to install it [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/).<br/>
+1. Create the docker group:
+
+$ sudo groupadd docker
+
+2. Add your user to the docker group:
+
+$ sudo usermod -aG docker $USER
+
+3. To install Docker Compose, run the following commands in your terminal/command line:
+
+$ sudo apt update
+
+$ sudo apt install docker-compose
+
+4. Check to make sure that you have Docker version 17.03.1-ce or greater, and Docker Compose version 1.9.0 or greater:
+
+$ docker --version && docker-compose --version
+
+$ docker run hello-world
 ### Installing Node.js and npm
 To install Node.js and npm, run the following commands in your terminal/command line:<br/>
 $ sudo bash -c "cat >/etc/apt/sources.list.d/nodesource.list" <<EOL<br/>
