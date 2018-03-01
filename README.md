@@ -56,12 +56,13 @@ $ source ~/.profile<br/>
 Check that the Go version is v1.8 or later:<br/>
 $ go version<br/>
 
-**Installing Hyperledger Fabric Docker Images and Binaries**
+<h3>Installing Hyperledger Fabric Docker Images and Binaries<h3>
 
 Next, we will download the latest released Docker images for Hyperledger Fabric, and tag them with the latest tag. Execute the command from within the directory into which you will extract the platform-specific binaries:
 
 $ curl -sSL https://goo.gl/Q3YRTi | bash
 
+NOTE: Check https://hyperledger-fabric.readthedocs.io/en/latest/samples.html#binaries for the latest URL (the blue portion in the above curl command) to pull in binaries.
 <b>The project</b>  <br>
 For running blochain 
 
