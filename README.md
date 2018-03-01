@@ -56,7 +56,7 @@ $ source ~/.profile<br/>
 Check that the Go version is v1.8 or later:<br/>
 $ go version<br/>
 
-Installing Hyperledger Fabric Docker Images and Binaries
+**Installing Hyperledger Fabric Docker Images and Binaries**
 
 Next, we will download the latest released Docker images for Hyperledger Fabric, and tag them with the latest tag. Execute the command from within the directory into which you will extract the platform-specific binaries:
 
