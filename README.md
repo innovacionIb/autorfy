@@ -18,13 +18,15 @@ $ sudo groupadd docker
 
 $ sudo usermod -aG docker $USER
 
-3. To install Docker Compose, run the following commands in your terminal/command line:
+3. Log out and log back in, so that your group membership is re-evaluated.
+
+4. To install Docker Compose, run the following commands in your terminal/command line:
 
 $ sudo apt update
 
 $ sudo apt install docker-compose
 
-4. Check to make sure that you have Docker version 17.03.1-ce or greater, and Docker Compose version 1.9.0 or greater:
+5. Check to make sure that you have Docker version 17.03.1-ce or greater, and Docker Compose version 1.9.0 or greater:
 
 $ docker --version && docker-compose --version
 
