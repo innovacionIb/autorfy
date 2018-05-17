@@ -91,4 +91,4 @@ $ node server.js
 
 Load the client simply by opening localhost:8000 in any browser window of your choice, and you should see the user interface for our simple application at this URL .
 
-Example of Blockchain here.   http://ibinnovation9734.cloudapp.net:8000 
+Example of Blockchain here.   http://autorfy.com/
